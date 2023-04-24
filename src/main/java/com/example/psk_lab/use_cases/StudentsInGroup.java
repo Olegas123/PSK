@@ -2,7 +2,6 @@ package com.example.psk_lab.use_cases;
 
 import com.example.psk_lab.entities.Groups;
 import com.example.psk_lab.entities.Student;
-import com.example.psk_lab.interceptors.LoggedInvocation;
 import com.example.psk_lab.persistence.GroupsDAO;
 import com.example.psk_lab.persistence.StudentDAO;
 import lombok.Getter;
@@ -17,7 +16,7 @@ import java.io.Serializable;
 import java.util.Map;
 
 @Model
-public class StudentsForGroup implements Serializable {
+public class StudentsInGroup implements Serializable {
 
     @Inject
     private GroupsDAO groupsDAO;
@@ -41,7 +40,6 @@ public class StudentsForGroup implements Serializable {
     }
 
     @Transactional
-    @LoggedInvocation
     public void createStudent() {
         studentToCreate.setGroup(this.groups);
         studentDAO.persist(studentToCreate);

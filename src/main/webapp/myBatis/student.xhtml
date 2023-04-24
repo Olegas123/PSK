@@ -7,21 +7,21 @@
       xmlns:f="http://java.sun.com/jsf/core">
 <h:head/>
 <h:body>
-   <h2>Students studying in #{studentsForGroup.groups.direction} direction:</h2>
+   <h2>Students studying in #{studentsInGroup.groups.direction} direction:</h2>
    <ol>
-      <ui:repeat value="#{studentsForGroup.groups.students}" var="student">
+      <ui:repeat value="#{studentsInGroup.groups.students}" var="student">
          <li>
             <h:outputText value="#{student.name}   #{student.surname}"/>
          </li>
       </ui:repeat>
    </ol>
    <h:form>
-      <h:inputText id="name" a:placeholder="First Name" value="#{studentsForGroup.studentToCreate.name}" required="true" />
-      <h:inputText id="surname" a:placeholder="Last Name" value="#{studentsForGroup.studentToCreate.surname}" required="true" />
+      <h:inputText id="name" a:placeholder="First Name" value="#{studentsInGroup.studentToCreate.name}" required="true" />
+      <h:inputText id="surname" a:placeholder="Last Name" value="#{studentsInGroup.studentToCreate.surname}" required="true" />
       <h:commandButton value="Add student to the group"
-                       actionListener="#{studentsForGroup.createStudent}"
-                       action="#{'student?faces-redirect=true&amp;groupsId='.concat(studentsForGroup.groups.id)}">
-         <f:param name="groupsId" value="#{studentsForGroup.groups.id}"/>
+                       actionListener="#{studentsInGroup.createStudent}"
+                       action="#{'student?faces-redirect=true&amp;groupsId='.concat(studentsInGroup.groups.id)}">
+         <f:param name="groupsId" value="#{studentsInGroup.groups.id}"/>
       </h:commandButton>
    </h:form>
    <h:link outcome="/myBatis/groups" value="Back to mybatis groups page"/>
