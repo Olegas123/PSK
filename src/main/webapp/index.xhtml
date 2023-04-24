@@ -1,0 +1,39 @@
+<!--<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<f:view>
+    <h:outputLabel value="Hello, world"/>
+    <h:form>
+
+    </h:form>
+</f:view>
+</html>-->
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+>
+<h:head/>
+<h:body>
+    <h2>Groups:</h2>
+    <ol>
+        <ui:repeat value="#{group.allGroups}" var="groups">
+            <li>
+                <h:link value="#{groups.id}   #{groups.course}   #{groups.direction}" outcome="students?groupsId=#{groups.id}"/>
+            </li>
+        </ui:repeat>
+    </ol>
+    <h:form>
+        <h:inputText a:placeholder="Course" value="#{group.groupToCreate.course}" required="true" />
+        <h:inputText a:placeholder="Direction" value="#{group.groupToCreate.direction}" required="true" />
+        <h:commandButton value="Add new group" actionListener="#{group.createGroup}" action="index?faces-redirect=true"/>
+    </h:form>
+    <h:link outcome="myBatis/groups" value="MyBatis version"/>
+</h:body>
+</html>

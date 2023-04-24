@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+>
+<h:head/>
+<h:body>
+    <h2>Groups:</h2>
+    <ol>
+        <ui:repeat value="#{groupMyBatis.allGroups}" var="groups">
+            <li>
+                <h:link value="#{groups.id}   #{groups.course}   #{groups.direction}" outcome="student?groupsId=#{groups.id}"/>
+            </li>
+        </ui:repeat>
+    </ol>
+    <h:form>
+        <h:inputText a:placeholder="Course" value="#{groupMyBatis.groupsToCreate.course}" required="true" />
+        <h:inputText a:placeholder="Direction" value="#{groupMyBatis.groupsToCreate.direction}" required="true" />
+        <h:commandButton value="Add new group" actionListener="#{groupMyBatis.createGroup}" action="groups?faces-redirect=true"/>
+    </h:form>
+    <h:link value="Back to JPA implementation" outcome="/index"/>
+</h:body>
+</html>
