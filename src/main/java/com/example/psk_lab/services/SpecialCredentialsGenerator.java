@@ -1,7 +1,6 @@
 package com.example.psk_lab.services;
 
 import javax.enterprise.context.ApplicationScoped;
-import javax.enterprise.inject.Specializes;
 import java.util.Random;
 
 ///@Specializes
@@ -13,6 +12,7 @@ public class SpecialCredentialsGenerator extends StudentsLoginCredentialsGenerat
         try {
             Thread.sleep(3000); // Simulate intensive work
         } catch (InterruptedException e) {
+            System.out.println(e);
         }
         Integer loginCredentialsEndNumber = new Random().nextInt(9000) + 1000;
         return "special" + name.substring(0, 2) + surname.substring(0, 2) + loginCredentialsEndNumber;

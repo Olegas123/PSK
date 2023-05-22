@@ -15,9 +15,6 @@ public class Student {
     @Basic(optional = false)
     private String surname;
 
-    @Basic
-    private String login;
-
     @ManyToOne
     private com.example.psk_lab.entities.Groups groups;
 
@@ -66,14 +63,6 @@ public class Student {
 
     public void setOptionalCourses(List<OptionalCourses> optionalCourses) {
         this.optionalCourses = optionalCourses;
-    }
-
-    public String getLogin() {
-        return login;
-    }
-
-    public void setLogin(String login) {
-        this.login = login;
     }
 
     public int getVersion() {

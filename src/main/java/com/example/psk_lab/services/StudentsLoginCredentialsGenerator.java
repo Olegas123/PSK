@@ -13,6 +13,7 @@ public class StudentsLoginCredentialsGenerator implements Serializable, ICredent
         try {
             Thread.sleep(3000); // Simulate intensive work
         } catch (InterruptedException e) {
+            System.out.println(e);
         }
         Integer loginCredentialsEndNumber = new Random().nextInt(9000) + 1000;
         return name.substring(0, 2) + surname.substring(0, 2) + loginCredentialsEndNumber;

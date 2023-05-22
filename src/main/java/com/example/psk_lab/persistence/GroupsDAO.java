@@ -1,7 +1,6 @@
 package com.example.psk_lab.persistence;
 
 import com.example.psk_lab.entities.Groups;
-import com.example.psk_lab.entities.Student;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
