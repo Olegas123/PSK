@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/beans_2_0.xsd"
+       bean-discovery-mode="annotated">
+    <interceptors>
+        <class>com.example.psk_lab.interceptors.MethodLogger</class>
+        <class>com.example.psk_lab.interceptors.PerformanceInterceptor</class>
+    </interceptors>
+    <alternatives>
+        <class>com.example.psk_lab.services.StudentsLoginCredentialsGenerator</class>
+<!--        <class>com.example.psk_lab.services.StudentsLoginCredentialsAlternativeGenerator</class>-->
+    </alternatives>
+    <decorators>
+        <class>com.example.psk_lab.decorator.HelloDecorator</class>
+    </decorators>
+
+</beans>

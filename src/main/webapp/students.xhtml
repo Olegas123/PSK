@@ -11,7 +11,7 @@
    <ol>
       <ui:repeat value="#{studentsInGroup.groups.students}" var="student">
          <li>
-            <h:outputText value="#{student.name}   #{student.surname}"/>
+            <h:link value="Name: #{student.name} Surname: #{student.surname}" outcome="studentDetails?studentId=#{student.id}" />
          </li>
       </ui:repeat>
    </ol>

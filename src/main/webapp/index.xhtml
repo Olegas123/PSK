@@ -21,11 +21,12 @@
 >
 <h:head/>
 <h:body>
+    <h2>#{helloMessage.helloMessage()}</h2>
     <h2>Groups:</h2>
     <ol>
         <ui:repeat value="#{group.allGroups}" var="groups">
             <li>
-                <h:link value="#{groups.id}   #{groups.course}   #{groups.direction}" outcome="students?groupsId=#{groups.id}"/>
+                <h:link value="Group ID - #{groups.id}, Group course - #{groups.course}, Group direction - #{groups.direction}" outcome="students?groupsId=#{groups.id}"/>
             </li>
         </ui:repeat>
     </ol>

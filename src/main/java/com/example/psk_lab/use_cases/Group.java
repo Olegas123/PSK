@@ -1,6 +1,7 @@
 package com.example.psk_lab.use_cases;
 
 import com.example.psk_lab.entities.Groups;
+import com.example.psk_lab.interceptors.LoggedInvocation;
 import com.example.psk_lab.persistence.GroupsDAO;
 import lombok.Getter;
 import lombok.Setter;
@@ -17,8 +18,7 @@ public class Group implements Serializable {
     @Inject
     private GroupsDAO groupsDAO;
 
-    @Getter
-    @Setter
+    @Getter @Setter
     private Groups groupToCreate = new Groups();
 
     @Getter
@@ -29,6 +29,7 @@ public class Group implements Serializable {
         loadAllGroups();
     }
 
+    @LoggedInvocation
     @Transactional
     public void createGroup(){
         this.groupsDAO.persist(groupToCreate);

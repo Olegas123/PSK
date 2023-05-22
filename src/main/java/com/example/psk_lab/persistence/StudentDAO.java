@@ -17,4 +17,12 @@ public class StudentDAO {
         this.em.persist(student);
     }
 
+    public Student findOne(Long id){
+        return em.find(Student.class, id);
+    }
+
+    @Transactional
+    public Student merge(Student student) {
+        return em.merge(student);
+    }
 }

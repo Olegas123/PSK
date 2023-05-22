@@ -9,6 +9,14 @@ public class OptionalCourses {
     @GeneratedValue
     private Long id;
 
+    @Basic(optional = false)
+    private String name;
+
+    @ManyToMany(mappedBy = "optionalCourses")
+    private List<Student> students;
+
+    /// ################ Getters - Setters ################ ///
+
     public void setId(Long id) {
         this.id = id;
     }
@@ -17,9 +25,6 @@ public class OptionalCourses {
         return id;
     }
 
-    @Basic(optional = false)
-    private String name;
-
     public String getName() {
         return name;
     }
@@ -27,9 +32,6 @@ public class OptionalCourses {
     public void setName(String name) {
         this.name = name;
     }
-
-    @ManyToMany(mappedBy = "optionalCourses")
-    private List<Student> students;
 
     public List<Student> getStudents() {
         return students;

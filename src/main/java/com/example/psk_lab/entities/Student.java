@@ -6,9 +6,28 @@ import java.util.List;
 @Entity
 public class Student {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Basic(optional = false)
+    private String name;
+
+    @Basic(optional = false)
+    private String surname;
+
+    @Basic
+    private String login;
+
+    @ManyToOne
+    private com.example.psk_lab.entities.Groups groups;
+
+    @ManyToMany
+    private List<OptionalCourses> optionalCourses;
+
+    @Version
+    private int version;
+
+    /// ################ Getters - Setters ################ ///
     public void setId(Long id) {
         this.id = id;
     }
@@ -16,9 +35,6 @@ public class Student {
     public Long getId() {
         return id;
     }
-
-    @Basic(optional = false)
-    private String name;
 
     public String getName() {
         return name;
@@ -28,9 +44,6 @@ public class Student {
         this.name = name;
     }
 
-    @Basic(optional = false)
-    private String surname;
-
     public String getSurname() {
         return surname;
     }
@@ -38,9 +51,6 @@ public class Student {
     public void setSurname(String surname) {
         this.surname = surname;
     }
-
-    @ManyToOne
-    private com.example.psk_lab.entities.Groups groups;
 
     public com.example.psk_lab.entities.Groups getGroup() {
         return groups;
@@ -50,14 +60,26 @@ public class Student {
         this.groups = groups;
     }
 
-    @ManyToMany
-    private List<OptionalCourses> optionalCourses;
-
     public List<OptionalCourses> getOptionalCourses() {
         return optionalCourses;
     }
 
     public void setOptionalCourses(List<OptionalCourses> optionalCourses) {
         this.optionalCourses = optionalCourses;
+    }
+
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
+    public int getVersion() {
+        return version;
+    }
+    public void setVersion(int version) {
+        this.version = version;
     }
 }

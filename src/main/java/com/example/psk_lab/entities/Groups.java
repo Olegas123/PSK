@@ -12,43 +12,39 @@ public class Groups {
     @GeneratedValue
     private Long id;
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
     @Basic(optional = false)
     private String direction;
-
-    public String getDirection() {
-        return direction;
-    }
-
-    public void setDirection(String direction) {
-        this.direction = direction;
-    }
 
     @Basic(optional = false)
     private Integer course;
 
+    @OneToMany(mappedBy = "groups")
+    private List<Student> students;
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+    public Long getId() {
+        return id;
+    }
+
+    public String getDirection() {
+        return direction;
+    }
+    public void setDirection(String direction) {
+        this.direction = direction;
+    }
+
     public Integer getCourse() {
         return course;
     }
-
     public void setCourse(Integer course) {
         this.course = course;
     }
 
-    @OneToMany(mappedBy = "groups")
-    private List<Student> students;
-
     public List<Student> getStudents() {
         return students;
     }
-
     public void setStudents(List<Student> students) {
         this.students = students;
     }

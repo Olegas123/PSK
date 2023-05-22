@@ -2,6 +2,7 @@ package com.example.psk_lab.use_cases;
 
 import com.example.psk_lab.entities.Groups;
 import com.example.psk_lab.entities.Student;
+import com.example.psk_lab.interceptors.LoggedInvocation;
 import com.example.psk_lab.persistence.GroupsDAO;
 import com.example.psk_lab.persistence.StudentDAO;
 import lombok.Getter;
@@ -24,8 +25,7 @@ public class StudentsInGroup implements Serializable {
     @Inject
     private StudentDAO studentDAO;
 
-    @Getter
-    @Setter
+    @Getter @Setter
     private Groups groups;
 
     @Getter @Setter
@@ -33,12 +33,12 @@ public class StudentsInGroup implements Serializable {
 
     @PostConstruct
     public void init() {
-        Map<String, String> requestParameters =
-                FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
+        Map<String, String> requestParameters = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
         Long groupsId = Long.parseLong(requestParameters.get("groupsId"));
         this.groups = groupsDAO.findOne(groupsId);
     }
 
+    @LoggedInvocation
     @Transactional
     public void createStudent() {
         studentToCreate.setGroup(this.groups);
